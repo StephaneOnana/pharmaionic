@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="teal">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Acceuil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="padding">
+    <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+  </div>
+
+ <h3>
+   Bienvenue dans l'application qui vous permet de gagner en temps sur les informations sanitaires de la ville de Maroua!
+ </h3>
+
+</ion-content>

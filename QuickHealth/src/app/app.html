@@ -1,0 +1,28 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <div>
+      <img style=" padding: 10%;" src="../assets/imgs/logo_QH.png" />
+    </div>
+
+  </ion-header>
+
+  <ion-content>
+    <ion-list class="list list-md">
+      <!--button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button-->
+      <button menuClose *ngFor="let p of pages" (click)="openPage(p)" class="item item-block item-md" icon-start="" ion-item="">
+        <ion-icon item-start="" role="img" class="icon icon-md item-icon" [name]="p.iconImg" style="color: rgb(230, 49, 53);" aria-label="logo angular"></ion-icon>
+
+        <!---->
+        {{p.title}}
+        <div class="button-effect" style="transform: translate3d(61px, -33px, 0px) scale(1); height: 140px; width: 140px; opacity: 0; transition: transform 412ms ease 0s, opacity 289ms ease 123ms;"></div>
+
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

@@ -1,0 +1,143 @@
+<ion-header class="header header-md" color="teal">
+  <ion-navbar color="teal" class="toolbar toolbar-md statusbar-padding" no-border-bottom="">
+
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <div class="button-effect"></div>
+
+    <ion-title class="title title-md">
+      <div class="toolbar-title toolbar-title-md">
+        Pharmacies
+      </div>
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar color="teal" class="toolbar toolbar-md statusbar-padding" no-border-top="">
+    <div class="toolbar-background toolbar-background-md"></div>
+    <div class="toolbar-content toolbar-content-md">
+      <ion-segment class="segment segment-md ng-valid ng-touched ng-dirty" [(ngModel)]="pet">
+        <ion-segment-button class="segment-button segment-activated" role="button" tappable="" value="puppies" aria-pressed="true" (click)="getDatasProximite()">
+          De Garde
+          <div class="button-effect" style="transform: translate3d(-6px, -55px, 0px) scale(1); height: 172px; width: 172px; opacity: 0; transition: transform 329ms ease 0s, opacity 230ms ease 99ms;"></div>
+        </ion-segment-button>
+        <ion-segment-button class="segment-button" role="button" tappable="" value="kittens" aria-pressed="false">
+          Toutes
+          <div class="button-effect" style="transform: translate3d(-77px, -74px, 0px) scale(1); height: 198px; width: 198px; opacity: 0; transition: transform 329ms ease 0s, opacity 230ms ease 99ms;"></div>
+        </ion-segment-button>
+        <ion-segment-button class="segment-button" role="button" tappable="" value="ducklings" aria-pressed="false" (click)="changeGlobal()">
+          Positions
+          <div class="button-effect"></div>
+          
+        </ion-segment-button>
+
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div padding>
+    <div [ngSwitch]="pet">
+      <div *ngSwitchCase="'puppies'">
+        <h2>Les pharmacies de garde</h2>
+        <ion-card *ngFor="let h of pharmacies; index as i" class="adv-map">
+          <div style="position: relative;">
+            <img src="../../assets/imgs/{{pharmaciesPhotos[i]}}.JPG">
+          
+          <ion-fab right top>
+            <button ion-fab color="teal" class="fab-map">
+              {{dimunitifpharmacies[i]}}
+            </button>
+          </ion-fab >
+          <ion-item>
+           
+            <h2>OK</h2>
+            <p>{{pointReference[i]}}</p>
+          </ion-item>
+          </div>
+          <ion-card-content>
+            <p>{{compharmacies[i]}}</p>
+          </ion-card-content>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small color="teal">
+                <ion-icon name="pin"></ion-icon>
+                <div >Position: {{latpharmacies[i]}}  ,  {{lonpharmacies[i]}}</div>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </div>
+
+
+      <div *ngSwitchCase="'kittens'">
+        <h2>Toutes les pharmacies</h2>
+        <ion-card *ngFor="let h of pharmacies; index as i" class="adv-map">
+          <div style="position: relative;">
+            <img src="../../assets/imgs/{{pharmaciesPhotos[i]}}.JPG">
+          
+          <ion-fab right top>
+            <button ion-fab color="teal" class="fab-map">
+              {{dimunitifpharmacies[i]}}
+            </button>
+          </ion-fab >
+          <ion-item>
+           
+            <h2>{{h}}</h2>
+            <p>{{pointReference[i]}}</p>
+          </ion-item>
+          </div>
+          <ion-card-content>
+            <p>{{compharmacies[i]}}</p>
+          </ion-card-content>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small color="teal">
+                <ion-icon name="pin"></ion-icon>
+                <div >Position: {{latpharmacies[i]}}  ,  {{lonpharmacies[i]}}</div>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+      </div>
+      <div *ngSwitchCase="'ducklings'">
+        <!--h2>Maps not available yet</h2>
+        <ion-fab right bottom>
+          <button ion-fab color="teal" (click)="openMap(
+            {
+              donnees:[selectedItem]
+            }
+          )">
+              <ion-icon name="pin"></ion-icon>
+          </button>
+          
+        </ion-fab-->
+        <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+        <ion-footer>
+  <ion-toolbar color="teal">
+     <ion-row no-padding text-center >
+      <ion-col>
+        <button ion-button clear small color="light" icon-start (click)="change1()" id="btn1">
+          <ion-icon name='pin'></ion-icon>
+          A proximité
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        <button ion-button clear small color="light" icon-start (click)="change()" id="2">
+          <ion-icon name='locate'></ion-icon>
+          Tous
+        </button>
+      </ion-col>
+</ion-row>
+  </ion-toolbar>
+</ion-footer>
+  </div>
+      </div>
+    </div>
+   
+
+</ion-content>
